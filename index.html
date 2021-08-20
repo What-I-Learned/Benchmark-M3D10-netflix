@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>Striveflix</title>
+  </head>
+
+  <body>
+    <div class="container-fluid text-white px-5">
+      <nav class="navbar navbar-expand-lg navbar-dark pr-0">
+        <a class="navbar-brand mr-0" href="#"
+          ><img src="./assets/imgs/Netflix_Logo_RGB.png" width="160"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"></a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li> -->
+            <!-- <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li> -->
+          </ul>
+
+          <div class="text-white navbar-nav align-items-center">
+            <i class="fas fa-lg fa-search mr-2"></i>
+            <a href="#" class="nav-link mr-2">KIDS</a>
+            <i class="fas fa-lg fa-bell mr-2"></i>
+            <div class="btn-group ml-2">
+              <button
+                type="button"
+                class="btn dropdown-toggle text-white p-0"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-lg fa-user-circle"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="backoffice.html">
+                  <button class="dropdown-item" type="button">
+                    Backoffice
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="position-relative">
+        <h2 class="d-inline-block mb-0 align-middle mr-3 mr-md-5">TV Shows</h2>
+        <div class="header-tools d-inline-block">
+          <div class="btn-group border">
+            <button type="button" class="btn btn-black pr-3 rounded-0">
+              Genres
+            </button>
+            <button
+              type="button"
+              class="
+                btn btn-black
+                dropdown-toggle dropdown-toggle-split
+                rounded-0
+              "
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+          <div class="header-icons d-inline-block">
+            <span
+              class="d-inline-block px-2 border align-middle"
+              style="padding-top: 0.4rem; padding-bottom: 0.4rem"
+              ><i class="fas fa-align-left"></i
+            ></span>
+            <span
+              class="d-inline-block px-2 border border-secondary align-middle"
+              style="padding-top: 0.4rem; padding-bottom: 0.4rem"
+              ><i class="fas fa-border-all"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid text-white px-5" style="clear: both">
+      <h4 class="mb-3 mt-5">Trending now</h4>
+
+      <!-- CAROUSEL THAT APPEARS FROM THE SMALL BREAKPOINT AND UP -->
+      <div
+        id="carouselExampleControls"
+        class="carousel slide d-none d-sm-block"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div
+              class="
+                row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6
+                mx-n1
+              "
+            >
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/1.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 1"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/2.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 2"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/3.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 3"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/4.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 4"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/5.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 5"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/6.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 6"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div
+              class="
+                row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6
+                mx-n1
+              "
+            >
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/1.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 1"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/2.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 2"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/3.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 3"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/4.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 4"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/5.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 5"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/6.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 6"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div
+              class="
+                row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6
+                mx-n1
+              "
+            >
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/1.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 1"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/2.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 2"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/3.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 3"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/4.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 4"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/5.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 5"
+                />
+              </div>
+              <div class="col mb-2 mb-lg-0 px-1">
+                <img
+                  src="./assets/imgs/movies/6.png"
+                  class="img-fluid w-100"
+                  alt="movie picture 6"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <!-- CAROUSEL FOR THE MOBILE BREAKPOINT AND HIDDEN FROM SMALL BREAKPOINT AND UP (ID SHOULD BE DIFFERENT FOR EVERY CAROUSEL YOU CREATE) -->
+      <div
+        id="carouselForMobile"
+        class="carousel slide d-sm-none"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="./assets/imgs/movies/1.png"
+              class="img-fluid w-100"
+              alt="movie picture 1"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./assets/imgs/movies/2.png"
+              class="img-fluid w-100"
+              alt="movie picture 2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./assets/imgs/movies/3.png"
+              class="img-fluid w-100"
+              alt="movie picture 3"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./assets/imgs/movies/4.png"
+              class="img-fluid w-100"
+              alt="movie picture 4"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./assets/imgs/movies/5.png"
+              class="img-fluid w-100"
+              alt="movie picture 5"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./assets/imgs/movies/6.png"
+              class="img-fluid w-100"
+              alt="movie picture 6"
+            />
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselForMobile"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselForMobile"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <h4 class="mb-3 mt-5">Watch It Again</h4>
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 mx-n1"
+      >
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/7.png"
+            class="img-fluid w-100"
+            alt="movie picture 7"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/8.png"
+            class="img-fluid w-100"
+            alt="movie picture 8"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/9.png"
+            class="img-fluid w-100"
+            alt="movie picture 9"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/10.png"
+            class="img-fluid w-100"
+            alt="movie picture 10"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/11.png"
+            class="img-fluid w-100"
+            alt="movie picture 11"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/12.png"
+            class="img-fluid w-100"
+            alt="movie picture 12"
+          />
+        </div>
+      </div>
+      <h4 class="mb-3 mt-5">New Releases</h4>
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 mx-n1"
+      >
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/13.png"
+            class="img-fluid w-100"
+            alt="movie picture 13"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/14.png"
+            class="img-fluid w-100"
+            alt="movie picture 14"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/15.png"
+            class="img-fluid w-100"
+            alt="movie picture 15"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/16.png"
+            class="img-fluid w-100"
+            alt="movie picture 16"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/17.png"
+            class="img-fluid w-100"
+            alt="movie picture 17"
+          />
+        </div>
+        <div class="col mb-2 mb-lg-0 px-1">
+          <img
+            src="./assets/imgs/movies/18.png"
+            class="img-fluid w-100"
+            alt="movie picture 18"
+          />
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container text-muted my-5">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-12 mb-3">
+                <i class="fab fa-facebook-square fa-lg mr-3"></i>
+                <i class="fab fa-instagram fa-lg mr-3"></i>
+                <i class="fab fa-twitter fa-lg mr-3"></i>
+                <i class="fab fa-youtube fa-lg"></i>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ul>
+                </small>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ul>
+                </small>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ul>
+                </small>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ol class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ol>
+                </small>
+              </div>
+            </div>
+            <button
+              class="
+                btn btn-sm
+                border border-secondary
+                rounded-0
+                text-muted
+                mt-3
+              "
+            >
+              <small>Service Code</small>
+            </button>
+            <div class="mt-2"><small>i'm a copyright</small></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

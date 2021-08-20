@@ -1,0 +1,46 @@
+body {
+  background-color: #141414;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 15px;
+}
+
+.carousel-control-prev {
+  left: -15px;
+}
+
+.carousel-control-next {
+  right: -15px;
+}
+
+.navbar-brand img {
+  position: relative;
+  left: -2rem;
+}
+
+.btn {
+  color: white;
+}
+
+.btn:hover {
+  color: #d6d6d6;
+}
+
+.btn-black {
+  background-color: #000;
+}
+
+@media (max-width: 575px) {
+  .header-tools {
+    float: right;
+  }
+}
+
+@media (min-width: 576px) {
+  .header-icons {
+    position: absolute;
+    right: 0;
+  }
+}

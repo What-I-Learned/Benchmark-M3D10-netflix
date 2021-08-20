@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>Striveflix</title>
+  </head>
+
+  <body>
+    <div class="container-fluid text-white px-5">
+      <nav class="navbar navbar-expand-lg navbar-dark pr-0">
+        <a class="navbar-brand mr-0" href="#"
+          ><img src="./assets/imgs/Netflix_Logo_RGB.png" width="160"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Add a movie <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="details.html">Movies DB</a>
+            </li>
+          </ul>
+
+          <div class="text-white navbar-nav align-items-center">
+            <i class="fas fa-lg fa-search mr-2"></i>
+            <div class="btn-group ml-2">
+              <button
+                type="button"
+                class="btn dropdown-toggle text-white p-0"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-lg fa-user-circle"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="index.html">
+                    <button class="dropdown-item" type="button">
+                      Home Page
+                    </button></a
+                  >
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+<main class="container px-5">
+    <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+            <label for="name">Movie Name</label>
+            <input id="name" type="text" class="form-control" placeholder="Movie name"
+                aria-describedby="name field" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Movie Description</label>
+            <textarea id="description" type="textarea" rows="3" class="form-control"
+                placeholder="Movie description" aria-describedby="Movie Description"
+                required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">Movie category</label>
+            <input id="category" type="text" class="form-control" placeholder="Movie category"
+                aria-describedby="movie category" required>
+        </div>
+        <div class="form-group">
+            <label for="movieCover">Movie Cover</label>
+            <input id="movieCover" type="url" class="form-control" placeholder="Movie Cover URL" aria-describedby="Movie Cover"
+                required>
+        </div>
+        <!-- <button type="button">Cancel</button> -->
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-outline-light"><span>Submit Movie</span>
+        <!-- spinner -->
+                <div class="spinner-border spinner-border-sm d-none" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
+            <button id="delete-btn" type="button" class="btn btn-danger d-none"
+                onclick="handleDelete()"><span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-trash" viewBox="0 0 16 16">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>
+
+                </span></button>
+        </div>
+    </form>
+</main>
+
+
+ 
+    <footer>
+      <div class="container text-muted my-5">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-12 mb-3">
+                <i class="fab fa-facebook-square fa-lg mr-3"></i>
+                <i class="fab fa-instagram fa-lg mr-3"></i>
+                <i class="fab fa-twitter fa-lg mr-3"></i>
+                <i class="fab fa-youtube fa-lg"></i>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ul>
+                </small>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ul>
+                </small>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ul>
+                </small>
+              </div>
+              <div class="col-md-3">
+                <small>
+                  <ol class="list-unstyled">
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                    <li class="mb-2">menu item</li>
+                  </ol>
+                </small>
+              </div>
+            </div>
+            <button
+              class="
+                btn btn-sm
+                border border-secondary
+                rounded-0
+                text-muted
+                mt-3
+              "
+            >
+              <small>Service Code</small>
+            </button>
+            <div class="mt-2"><small>i'm a copyright</small></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        const movieId = new URLSearchParams(location.search).get("id")
+
+        const endpoint = movieId?"https://striveschool-api.herokuapp.com/api/movies/"+movieId:`https://striveschool-api.herokuapp.com/api/movies/`
+        const method = movieId? "PUT":"POST"
+        const authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFjZjk1ZTJkNTI2MjAwMTViNmRjOWQiLCJpYXQiOjE2Mjk0NjE2NzEsImV4cCI6MTYzMDY3MTI3MX0.Lxq9IxiDoIiUpDLh6lUCm2ggvoCwzoeRlwOEca-x-Vg"
+
+        console.log(endpoint);
+
+        window.onload = async()=>{
+            const submitBtn = document.querySelector("button[type='submit']")
+
+            if(movieId){
+
+                const response = await fetch(endpoint,{headers: {
+              Authorization: authorization,
+            },                 
+                })
+                const movieDetails = await response.json()
+                console.log(movieDetails);
+            }
+        }
+
+        const handleSubmit = async(event)=>{
+            event.preventDefault();
+            isLoading(true)
+
+            const newMovie = {
+                name:document.getElementById("name").value,
+                description:document.getElementById("description").value,
+                category:document.getElementById("category").value.toLowerCase(),
+                imageUrl:document.getElementById("movieCover").value,
+            }
+
+            console.log(newMovie);
+            try{
+                const response = await fetch(endpoint,{
+                    method,
+                    body: JSON.stringify(newMovie),
+                    headers:{
+                        "Content-Type": "application/json", 
+                        Authorization:authorization,
+                    }
+                });
+                
+                if(response.ok){
+                    const respMovie = await response.json()
+                    
+                    if (movieId) {
+                        alert("Movie with an id of: " + respMovie._id + " got edited successfully")
+                    }
+                    else {
+                        alert("Movie created successfully with an id of " + respMovie._id)
+                    }
+                }else{
+                    if (response.status >= 400 && response.status < 500) {
+                        throw new Error("User generated error, verify the data that you are sending!")
+                    } else if (response.status >= 500 && response.status < 600) {
+                        throw new Error("Server generated error, contact the admin to fix this problem.")
+                    }
+                }
+            }catch(err){
+                console.log(err.message);
+            }finally{
+                isLoading(false)
+            }
+        }
+
+        const handleDelete = async () => {
+            try {
+                const response = await fetch(endpoint, { method: "DELETE",
+                headers:{
+                        Authorization:authorization, }})
+                if (response.ok) {
+                    const deletedObj = await response.json()
+                    alert(deletedObj._id)
+                    // setTimeout(() => { window.location.assign("/") }, 3500) 
+                } else {
+                    showAlert("danger", "Something went wrong in the deletion process")
+                }
+            } catch (err) {
+                showAlert("danger", err.message)
+            }
+        }
+
+        const isLoading = (loading) => {
+            if (loading) {
+                document.querySelector(".spinner-border").classList.remove("d-none")
+            } else {
+                document.querySelector(".spinner-border").classList.add("d-none")
+            }
+        }
+
+    </script>
+  </body>
+</html>
