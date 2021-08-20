@@ -214,7 +214,7 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                 if(response.ok){
                     const moviesData = await response.json()
                     console.log(moviesData);
-                    displayMovies(moviesData, url)
+                    displayMovies(moviesData)
                 }
             }catch(err){
                 console.log(err);
@@ -226,18 +226,22 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                 data.forEach(movieGenre => {
                     let genreContainer = document.createElement("div")
                     genreContainer.classList.add("category-container-inner")
+                    genreContainer.id = `${movieGenre}`
                     
-                    genreContainer.innerHTML=`<h4 class="mb-3 mt-5 category-header">${movieGenre.charAt(0).toUpperCase() + movieGenre.slice(1)}</h4>`
+                    genreContainer.innerHTML=`<h4 class="mb-3 mt-5 category-header">${movieGenre.charAt(0).toUpperCase() + movieGenre.slice(1)}</h4>
+                    <button class="btn btn-success mt-3" onclick="edit()">Edit the movie</button>`
                  
 
                     moviesContainer.append(genreContainer)
-                     fetchMoviesByGenre(url,movieGenre)
+                    
+                    fetchMoviesByGenre(url,movieGenre,genreContainer.id)
                     
                 });
             }
         }
 
-        async function fetchMoviesByGenre(url, genre){
+        async function fetchMoviesByGenre(url, genre,place){
+            let container=place
             try{
 
                 const response = await fetch(url+genre,{
@@ -247,18 +251,19 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                 if(response.ok){
                     const moviesData = await response.json()
                     // return moviesData
-                    displayMoviesyGenre(moviesData)
+                    displayMoviesyGenre(moviesData,container)
                 }
             }catch(err){
                 console.log(err);
             }
         } 
 
-        function displayMoviesyGenre(moviesByGenre){
-            let moviesContainer = document.querySelector(".category-container-inner")
+        function displayMoviesyGenre(moviesByGenre,container){
+            let divContainer = document.getElementById(container)
+
             let movieItem = document.createElement("div")
             movieItem.classList.add("row" ,"row-cols-1" ,"row-cols-sm-2", "row-cols-md-3", "row-cols-lg-6", "mx-n1", "movie-container")
-            moviesContainer.append(movieItem)
+            divContainer.append(movieItem)
             moviesByGenre.forEach(movie => {
                 let movieItemInner = document.createElement("div")
                 movieItemInner.classList.add("col", "mb-2", "mb-lg-0", "px-1")
@@ -272,6 +277,9 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                 movieItem.append(movieItemInner)
             });
             console.log(moviesContainer);
+        }
+        const edit = () => {
+            window.location.assign("./backoffice.html?id=" + eventId)
         }
     </script>
   </body>
