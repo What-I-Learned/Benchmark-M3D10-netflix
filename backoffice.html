@@ -210,7 +210,7 @@
         const method = movieId? "PUT":"POST"
         const authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFjZjk1ZTJkNTI2MjAwMTViNmRjOWQiLCJpYXQiOjE2Mjk0NjE2NzEsImV4cCI6MTYzMDY3MTI3MX0.Lxq9IxiDoIiUpDLh6lUCm2ggvoCwzoeRlwOEca-x-Vg"
 
-        console.log(endpoint);
+        console.log(endpoint,method);
 
         window.onload = async()=>{
             const submitBtn = document.querySelector("button[type='submit']")
@@ -223,6 +223,11 @@
                 })
                 const movieDetails = await response.json()
                 console.log(movieDetails);
+                document.getElementById("name").value = movieDetails.name
+                document.getElementById("description").value = movieDetails.description
+                document.getElementById("category").value = movieDetails.category
+                document.getElementById("movieCover").value = movieDetails.imageUrl
+                
             }
         }
 
@@ -253,9 +258,11 @@
                     
                     if (movieId) {
                         alert("Movie with an id of: " + respMovie._id + " got edited successfully")
+                        setTimeout(() => { window.location.assign("/details.html") }, 1500) // pushes the user to the homepage after 3,5 seconds
                     }
                     else {
                         alert("Movie created successfully with an id of " + respMovie._id)
+                        setTimeout(() => { window.location.assign("/details.html") }, 1500) // pushes the user to the homepage after 3,5 seconds
                     }
                 }else{
                     if (response.status >= 400 && response.status < 500) {
@@ -296,6 +303,7 @@
             }
         }
 
+        
     </script>
   </body>
 </html>

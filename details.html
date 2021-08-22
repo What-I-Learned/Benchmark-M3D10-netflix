@@ -96,27 +96,13 @@
     <main class="container-fluid text-white px-5" style="clear: both">
         <div class="category-container">
             <div class="category-container-inner">
-            <h4 class="mb-3 mt-5 category-header">Watch It Again</h4>
-            <div
-              class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 mx-n1 movie-container"
-            >
-              <div class="col mb-2 mb-lg-0 px-1">
-                <img
-                  src="./assets/imgs/movies/7.png"
-                  class="img-fluid w-100"
-                  alt="movie picture 7"
-                />
-              </div>
-              <div class="col mb-2 mb-lg-0 px-1">
-                <img
-                  src="./assets/imgs/movies/7.png"
-                  class="img-fluid w-100"
-                  alt="movie picture 7"
-                />
-              </div>
-        </div>
+            <h4 class="mb-3 mt-5 category-header">Movies in data base</h4>
     </div>
-        
+    <div class="spinner-container d-flex justify-content-center align-items-center">
+    <div class="spinner-border spinner-border-sm d-none" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
+</div>
     </main>
 
     <footer>
@@ -201,7 +187,12 @@
     <script>
 const authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFjZjk1ZTJkNTI2MjAwMTViNmRjOWQiLCJpYXQiOjE2Mjk0NjE2NzEsImV4cCI6MTYzMDY3MTI3MX0.Lxq9IxiDoIiUpDLh6lUCm2ggvoCwzoeRlwOEca-x-Vg"
 const url = "https://striveschool-api.herokuapp.com/api/movies/"
-        window.onload = async()=>{
+        window.onload = ()=>{
+          fetchMovies(url);
+
+        } 
+        async function fetchMovies(url){
+          isLoading(true)
             try{
 
                 const response = await fetch(url,{
@@ -218,6 +209,8 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                 }
             }catch(err){
                 console.log(err);
+            }finally{
+                isLoading(false)
             }
 
           function displayMovies(data){
@@ -228,8 +221,7 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                     genreContainer.classList.add("category-container-inner")
                     genreContainer.id = `${movieGenre}`
                     
-                    genreContainer.innerHTML=`<h4 class="mb-3 mt-5 category-header">${movieGenre.charAt(0).toUpperCase() + movieGenre.slice(1)}</h4>
-                    <button class="btn btn-success mt-3" onclick="edit()">Edit the movie</button>`
+                    genreContainer.innerHTML=`<h4 class="mb-3 mt-5 category-header">${movieGenre.charAt(0).toUpperCase() + movieGenre.slice(1)}</h4>`
                  
 
                     moviesContainer.append(genreContainer)
@@ -241,6 +233,7 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
         }
 
         async function fetchMoviesByGenre(url, genre,place){
+          isLoading(true)
             let container=place
             try{
 
@@ -250,11 +243,14 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                 });
                 if(response.ok){
                     const moviesData = await response.json()
+                    console.log(moviesData);
                     // return moviesData
                     displayMoviesyGenre(moviesData,container)
                 }
             }catch(err){
                 console.log(err);
+            }finally{
+              isLoading(false)
             }
         } 
 
@@ -266,20 +262,66 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
             divContainer.append(movieItem)
             moviesByGenre.forEach(movie => {
                 let movieItemInner = document.createElement("div")
-                movieItemInner.classList.add("col", "mb-2", "mb-lg-0", "px-1")
-                movieItemInner.innerHTML =`<img
-                  src="${movie.imageUrl}"
-                  class="img-fluid w-100"
-                  alt="movie picture 7"
-                />`
+                // movieItemInner.classList.add("col", "mb-2", "mb-lg-0", "px-1")
+                movieItemInner.innerHTML =`<div class="card" style="width: 18rem;">
+                  <div class="movie-image">
+                  <img src="${movie.imageUrl}" class="card-img-top" alt="...">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">${movie.name}</h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span style="display:block">Create at:</span>${new Date(movie.createdAt).toLocaleString()}</li>
+                  </ul>
+                  <div class="options d-flex justify-content-between">
+                    <a href="#" id="edit-btn" onclick="handleEdit('${movie._id}')" class="card-link">Edit</a>
+                    <a href="#" id="delete-btn" onclick="handleDelete('${movie._id}')"  class="card-link">Delete</a>
+                  </div>
+                  </div>`
+              
                 
                 console.log(movieItem);
                 movieItem.append(movieItemInner)
             });
-            console.log(moviesContainer);
         }
-        const edit = () => {
-            window.location.assign("./backoffice.html?id=" + eventId)
+
+        async function handleDelete(movieId){
+          isLoading(true)
+          console.log(movieId);
+            try {
+                const response = await fetch(url+movieId, { method: "DELETE",headers:{
+                        Authorization:authorization,}})
+                if (response.ok) {
+                    const deletedObj = await response.json()
+
+                    // refresh the db
+                    location.reload();
+                    // showAlert("success", "Event with id: " + deletedObj._id + " deleted successfully") // shows the custom alert
+                    // setTimeout(() => { window.location.assign("/") }, 3500) // pushes the user to the homepage after 3,5 seconds
+                } else {
+                    // showAlert("danger", "Something went wrong in the deletion process")
+                }
+            } catch (err) {
+                // showAlert("danger", err.message)
+            }finally{
+              isLoading(false)
+            }
+        }
+
+        const isLoading = (loading) => {
+            if (loading) {
+                document.querySelector(".spinner-border").classList.remove("d-none")
+                document.querySelector(".spinner-container").classList.add("d-flex")
+                document.querySelector(".spinner-container").classList.remove("d-none")
+
+            } else {
+                document.querySelector(".spinner-border").classList.add("d-none")
+                document.querySelector(".spinner-container").classList.remove("d-flex")
+                document.querySelector(".spinner-container").classList.add("d-none")
+            }
+        }
+
+        const handleEdit = (movieId) => {
+            window.location.assign(`./backoffice.html?id=${movieId}`)
         }
     </script>
   </body>

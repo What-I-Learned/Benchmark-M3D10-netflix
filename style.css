@@ -31,7 +31,40 @@ body {
 .btn-black {
   background-color: #000;
 }
-
+.card {
+  background-color: #141414;
+  border: 1px solid #d6d6d6;
+}
+.card-body ul {
+  background-color: #141414;
+}
+.list-group-item {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 10px 20px;
+}
+.card-title {
+  margin-bottom: 0.2rem;
+}
+.card-body a {
+  color: #d6d6d6;
+  padding: 3px 8px;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+}
+.card-body a:hover {
+  text-decoration: none;
+  color: #141414;
+  background-color: #d6d6d6;
+}
+.movie-image {
+  height: 10rem;
+  overflow: hidden;
+}
+.movie-image img {
+  width: 100%;
+  background-position: cover;
+}
 @media (max-width: 575px) {
   .header-tools {
     float: right;
