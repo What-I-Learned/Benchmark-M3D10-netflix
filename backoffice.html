@@ -224,7 +224,8 @@
             },                 
                 })
                 const movieDetails = await response.json()
-                console.log();
+                let movieInf = movieDetails.find(elem => elem._id === movieId)
+                console.log(movieInf);
                 // document.getElementById("name").value = movieDetails.name
                 // document.getElementById("description").value = movieDetails.description
                 // document.getElementById("category").value = movieDetails.category
@@ -258,7 +259,7 @@
                 if(response.ok){
                     const respMovie = await response.json()
                     
-                    if (movieId) {
+                    if (movieId || movieGenre) {
                         alert("Movie with an id of: " + respMovie._id + " got edited successfully")
                         setTimeout(() => { window.location.assign("/details.html") }, 1500) // pushes the user to the homepage after 3,5 seconds
                     }
