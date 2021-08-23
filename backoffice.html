@@ -205,28 +205,30 @@
     ></script>
     <script>
         const movieId = new URLSearchParams(location.search).get("id")
+        const movieGenre = new URLSearchParams(location.search).get("genre")
+        console.log(movieGenre,movieId);
 
-        const endpoint = movieId?"https://striveschool-api.herokuapp.com/api/movies/"+movieId:`https://striveschool-api.herokuapp.com/api/movies/`
-        const method = movieId? "PUT":"POST"
+        const endpoint = movieGenre && movieId?`https://striveschool-api.herokuapp.com/api/movies/${genre}`:`https://striveschool-api.herokuapp.com/api/movies/`
+        const method = movieId?"PUT":"POST"
         const authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFjZjk1ZTJkNTI2MjAwMTViNmRjOWQiLCJpYXQiOjE2Mjk0NjE2NzEsImV4cCI6MTYzMDY3MTI3MX0.Lxq9IxiDoIiUpDLh6lUCm2ggvoCwzoeRlwOEca-x-Vg"
 
         console.log(endpoint,method);
 
         window.onload = async()=>{
             const submitBtn = document.querySelector("button[type='submit']")
-
-            if(movieId){
+            console.log(endpoint);
+            if(movieGenre){
 
                 const response = await fetch(endpoint,{headers: {
               Authorization: authorization,
             },                 
                 })
                 const movieDetails = await response.json()
-                console.log(movieDetails);
-                document.getElementById("name").value = movieDetails.name
-                document.getElementById("description").value = movieDetails.description
-                document.getElementById("category").value = movieDetails.category
-                document.getElementById("movieCover").value = movieDetails.imageUrl
+                console.log();
+                // document.getElementById("name").value = movieDetails.name
+                // document.getElementById("description").value = movieDetails.description
+                // document.getElementById("category").value = movieDetails.category
+                // document.getElementById("movieCover").value = movieDetails.imageUrl
                 
             }
         }

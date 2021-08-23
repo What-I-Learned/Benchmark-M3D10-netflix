@@ -273,7 +273,7 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
                     <li class="list-group-item"><span style="display:block">Create at:</span>${new Date(movie.createdAt).toLocaleString()}</li>
                   </ul>
                   <div class="options d-flex justify-content-between">
-                    <a href="#" id="edit-btn" onclick="handleEdit('${movie._id}')" class="card-link">Edit</a>
+                    <a href="#" id="edit-btn" onclick="handleEdit('${movie.category}','${movie._id}')" class="card-link">Edit</a>
                     <a href="#" id="delete-btn" onclick="handleDelete('${movie._id}')"  class="card-link">Delete</a>
                   </div>
                   </div>`
@@ -320,8 +320,9 @@ const url = "https://striveschool-api.herokuapp.com/api/movies/"
             }
         }
 
-        const handleEdit = (movieId) => {
-            window.location.assign(`./backoffice.html?id=${movieId}`)
+        const handleEdit = (genre,movieId) => {
+          console.log(`./backoffice.html/?genre=${genre}&id=${movieId}`);
+           window.location.assign(`./backoffice.html/?genre=${genre}&id=${movieId}`)
         }
     </script>
   </body>

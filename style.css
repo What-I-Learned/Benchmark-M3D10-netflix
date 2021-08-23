@@ -63,7 +63,8 @@ body {
 }
 .movie-image img {
   width: 100%;
-  background-position: cover;
+  background-size: cover;
+  background-position: center top;
 }
 @media (max-width: 575px) {
   .header-tools {
